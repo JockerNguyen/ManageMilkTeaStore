@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import app.bean.UserInfo;
 import app.service.UserService;
-import app.util.ConvertModelToDto;
+import app.util.ConvertModelToBean;
 
 public class UserServiceImpl extends BaseServiceImpl implements UserService {
 
@@ -29,11 +29,26 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
 	@Override
 	public UserInfo findUserInfoByUsername(String userName) {
 		try {
-			return ConvertModelToDto.mapUserToUserInfo(userDAO.loadUserByUserName(userName));
+			return ConvertModelToBean.mapUserToUserInfo(userDAO.loadUserByUserName(userName));
 		} catch (Exception e) {
 			return null;
 		}
 		
+	}
+
+	@Override
+	public boolean checkLogin(UserInfo userInfo) {
+		try {
+			return false;
+		}catch (Exception e){
+			return false;
+		}
+
+	}
+
+	@Override
+	public boolean createUser(UserInfo userInfo) {
+		return false;
 	}
 
 }

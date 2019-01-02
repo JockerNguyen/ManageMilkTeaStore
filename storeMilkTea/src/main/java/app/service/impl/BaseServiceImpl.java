@@ -3,7 +3,7 @@ package app.service.impl;
 import app.dao.UserDAO;
 
 public class BaseServiceImpl {
-	protected UserDAO userDAO;
+	public UserDAO userDAO;
 
 	public UserDAO getUserDAO() {
 		return userDAO;

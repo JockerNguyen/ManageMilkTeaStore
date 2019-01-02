@@ -94,4 +94,15 @@ public class User {
 		this.userName = userName;
 	}
 
+	public User(int id ,String userName, String email, String password, String fullName, Role role) {
+		this.user_id = id;
+		this.userName = userName;
+		Email = email;
+		Password = password;
+		this.fullName = fullName;
+		this.role = role;
+	}
+
+	public User() {
+	}
 }

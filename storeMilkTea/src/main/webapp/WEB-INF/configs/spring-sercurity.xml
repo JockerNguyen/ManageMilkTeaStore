@@ -9,28 +9,35 @@
         <csrf disabled="true" />
     </http>
 
-    <http auto-config="true">
-
-        <form-login login-page="/login" login-processing-url="/j_spring_security_login"
-                    default-target-url="/" authentication-failure-url="/login?error"
-                    username-parameter="username" password-parameter="password" />
-
-        <logout logout-url="/j_spring_security_logout"
-                logout-success-url="/logout" delete-cookies="JSESSIONID" />
-        <csrf disabled="false" />
-        <remember-me key="uniqueAndSecret" token-validity-seconds="1209600"
-                     remember-me-parameter="remember-me" />
-
-    </http>
-
-    <authentication-manager>
-        <authentication-provider user-service-ref="LoginService">
-            <password-encoder ref="encoder" />
-        </authentication-provider>
-    </authentication-manager>
-
     <beans:bean id="encoder"
                 class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
 
 
+    <beans:bean id="servicesEntryPoint"
+                class="app.jwt.AuthenticationEntryPoint" />
+    <beans:bean id="customAccessDeniedHandler"
+                class="app.jwt.CustomAccessDeniedHandler" />
+
+    <beans:bean id="jwtAuthenticationFilter" class="app.jwt.JwtAuthenticationTokenFilter"/>
+    <http pattern="/user/login" security="none"/>
+    <http pattern="/user/**" auto-config="false" use-expressions="true"
+          create-session="stateless" entry-point-ref="servicesEntryPoint">
+        <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
+
+        <custom-filter position="FORM_LOGIN_FILTER" ref="jwtAuthenticationFilter"/>
+        <access-denied-handler ref="customAccessDeniedHandler"/>
+        <csrf disabled="true" />
+    </http>
+    <http auto-config="true">
+        <intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
+        <form-login
+                login-page="/login"
+                login-processing-url="/j_spring_security_login"
+                default-target-url="/admin"
+                authentication-failure-url="/login?error"
+                username-parameter="username"
+                password-parameter="password" />
+        <logout logout-url="/j_spring_security_logout"
+                logout-success-url="/logout" delete-cookies="JSESSIONID" />
+    </http>
 </beans:beans>

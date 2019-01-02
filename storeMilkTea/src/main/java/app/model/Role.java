@@ -27,6 +27,14 @@ public class Role {
 	@JoinTable(name = "user", joinColumns = { @JoinColumn(name = "id") })
 	private List<User> users;
 
+	public Role(int role_Id, String name) {
+		this.role_Id = role_Id;
+		this.name = name;
+	}
+
+	public Role() {
+	}
+
 	public List<User> getUsers() {
 		return users;
 	}
