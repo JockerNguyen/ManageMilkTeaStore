@@ -7,31 +7,29 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
 
 @Entity
-@Table(name = "reviews")
+@Table(name = "cartDetails")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Review implements Serializable {
+public class CartDetail implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
-    private String content;
+    private Integer quantity;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date time;
-
-    @ManyToOne
-    @JoinColumn(name = "userID")
-    private User user;
+    private String size;
 
     @ManyToOne
     @JoinColumn(name = "productID")
     private Product product;
+
+    @ManyToOne
+    @JoinColumn(name = "cartID")
+    private Cart cart;
 
 }
