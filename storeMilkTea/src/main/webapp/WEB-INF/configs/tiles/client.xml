@@ -37,7 +37,8 @@
 		<put-list-attribute name="javascripts">
 			<!-- all js here -->
 			<!-- jquery latest version -->
-			<add-attribute value="/client/assets/js/vendor/jquery-1.12.0.min.js"/>
+			<add-attribute value="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"/>
+			<add-attribute value="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"/>
 			<!-- bootstrap js -->
 			<add-attribute value="/client/assets/js/bootstrap.min.js"/>
 			<!-- owl.carousel js -->

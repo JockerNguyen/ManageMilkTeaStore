@@ -168,26 +168,26 @@
                                 </form>
                             </div>
                             <div class="tab-pane" id="Registration">
-                                <form role="form" class="form-horizontal">
+                                <form role="form" id="formRegistration" name="registration" class="form-horizontal">
                                     <div class="form-group">
                                         <label for="fullName" class="col-sm-2 control-label">
                                             Full Name</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="fullName" placeholder="Full name"/>
+                                            <input name="fullName" type="text" class="form-control" id="fullName" placeholder="Full name"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="email" class="col-sm-2 control-label">
                                             Email</label>
                                         <div class="col-sm-10">
-                                            <input type="email" class="form-control" id="email" placeholder="Email"/>
+                                            <input name="email" type="email" class="form-control" id="email" placeholder="Email"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="password" class="col-sm-2 control-label">
                                             Password</label>
                                         <div class="col-sm-10">
-                                            <input type="password" class="form-control" id="password"
+                                            <input name="password" type="password" class="form-control" id="password"
                                                    placeholder="Password"/>
                                         </div>
                                     </div>
@@ -195,7 +195,7 @@
                                         <label for="confirmPassword" class="col-sm-2 control-label">
                                             Password</label>
                                         <div class="col-sm-10">
-                                            <input type="password" class="form-control" id="confirmPassword"
+                                            <input type="password" name="confirmPassword" class="form-control" id="confirmPassword"
                                                    placeholder="Confirm Password"/>
                                         </div>
                                     </div>
@@ -203,7 +203,7 @@
                                         <div class="col-sm-2">
                                         </div>
                                         <div class="col-sm-10">
-                                            <button type="button" class="btn btn-primary btn-sm">
+                                            <button class="btn btn-primary btn-sm">
                                                 Save & Continue
                                             </button>
                                         </div>
