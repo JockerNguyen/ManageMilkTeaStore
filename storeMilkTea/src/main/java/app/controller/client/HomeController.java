@@ -46,11 +46,4 @@ public class HomeController extends BaseController {
         return productService.searchProducts(content);
     }
 
-    @GetMapping("/products")
-    @ResponseBody
-    public List<ProductInfo> products() {
-        return productService.loadAllProduct();
-    }
-
-
 }
